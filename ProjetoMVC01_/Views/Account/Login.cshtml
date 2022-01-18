@@ -1,0 +1,68 @@
+﻿@model ProjetoMVC01_.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Login</title>
+
+        <link href="~/css/bootstrap.css" rel="stylesheet" />
+    </head>
+
+    <body>
+
+        @using (Html.BeginForm())
+        {
+            <div class="row mt-5">
+                <div class="col-md-4 offset-4">
+
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="text-center">
+                                <img src="https://www.cotiinformatica.com.br/imagens/logo-coti-informatica.png" />
+                                <br />
+                                <h5>Acesso ao Sistema</h5>
+                            </div>
+                            <hr />
+
+                            <label>E-mail de Acesso:</label>
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                            <div class="text-danger">
+                                @Html.ValidationMessageFor(model => model.Email)
+                            </div>
+                            <br />
+
+                            <label>Senha de Acesso:</label>
+                            @Html.PasswordFor(model => model.Senha, new { @class = "form-control" })
+                            <div class="text-danger">
+                                @Html.ValidationMessageFor(model => model.Senha)
+                            </div>
+                            <br />
+
+                            <div class="d-grid">
+                                <input type="submit" class="btn btn-dark" value="Acessar Sistema" />
+                            </div>
+
+                            @if (TempData["Mensagem"] != null)
+                            {
+                                <div class="alert alert-danger mt-3">
+                                    <strong>@TempData["Mensagem"]</strong>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+    </body>
+
+</html>
